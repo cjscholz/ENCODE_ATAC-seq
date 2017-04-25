@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y build-essential
 RUN /root/atac_dnase_pipelines/install_dependencies.sh
 
 RUN /root/atac_dnase_pipelines/install_genome_data.sh mm10 /root/genomes
-RUN /root/atac_dnase_pipelines/install_genome_data.sh hg38 /root/genomes
+# RUN /root/atac_dnase_pipelines/install_genome_data.sh hg38 /root/genomes
 
 RUN apt-get clean
 RUN apt-get remove --yes --purge build-essential
