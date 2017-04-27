@@ -2,16 +2,21 @@
 # docker container for ENCODE ATAC-seq pipeline
 ##################################################
 
-FROM continuumio/miniconda
-
+FROM continuumio/miniconda3
+# this is based on debian 8.5
 
 # File Author / Maintainer 
 MAINTAINER Claus J. Scholz <cscholz@uni-bonn.de>
 
 # start the installation
+# RUN apt-get upgrade -y
+
+RUN apt-get remove --yes openjdk-7-jre-headless
 RUN apt-get update && apt-get install -y wget \
-    default-jre \
-	git
+	git 
+
+RUN echo "deb ftp://ftp.nl.debian.org/debian jessie-backports main contrib non-free" >> /etc/apt/sources.list.d/backports.list
+RUN apt-get -y update && apt-get install -y -t jessie-backports openjdk-8-jre-headless ca-certificates-java
 
 USER root
 
