@@ -13,7 +13,10 @@ MAINTAINER Claus J. Scholz <cscholz@uni-bonn.de>
 
 RUN apt-get remove --yes openjdk-7-jre-headless
 RUN apt-get update && apt-get install -y wget \
-	git 
+	git \
+	libxp6 \
+	libxt6 \
+	ghostscript
 
 RUN echo "deb ftp://ftp.nl.debian.org/debian jessie-backports main contrib non-free" >> /etc/apt/sources.list.d/backports.list
 RUN apt-get -y update && apt-get install -y -t jessie-backports openjdk-8-jre-headless ca-certificates-java
